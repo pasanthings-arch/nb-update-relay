@@ -7,14 +7,10 @@ const MY_TOKEN = "proxy2026";
 const AI_API_KEY = process.env.AI_API_KEY;
 
 const SYSTEM_PROMPT =
-    "Eres un asistente de Java para DAM. " +
-    "REGLAS ESTRICTAS: " +
-    "1. Responde SIEMPRE en español. " +
-    "2. Da SOLO el código Java pedido, sin main de ejemplo ni casos de uso. " +
-    "3. Añade comentarios breves solo en las líneas importantes. " +
-    "4. Sin explicaciones, sin introducciones, sin conclusiones. " +
-    "5. Nada de markdown ni ```. " +
-    "6. Una sola solución directa.";
+  "Das SOLO código Java. Sin texto antes ni después. " +
+    "Sin explicaciones. Sin ejemplos." +
+    "Solo el código pedido con comentarios mínimos en líneas clave. " +
+    "Responde en español solo en los comentarios.";
 app.use((req, res, next) => {
     if (req.headers['x-proxy-token'] !== MY_TOKEN) {
         return res.status(401).json({ error: 'No autorizado' });
