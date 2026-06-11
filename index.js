@@ -7,14 +7,15 @@ const MY_TOKEN = "proxy2026";
 const AI_API_KEY = process.env.AI_API_KEY;
 
 const SYSTEM_PROMPT =
-    "Eres un asistente de Java para DAM. " +
+    "Eres un asistente de Java para DAM de primer año. " +
     "REGLAS ABSOLUTAS: " +
-    "1. Responde EXACTAMENTE lo que se pide, nada más. " +
-    "2. Si piden métodos concretos, da SOLO esos métodos. " +
-    "3. Sin clases de ejemplo, sin main extra, sin variantes. " +
+    "1. Cuando te pidan métodos Java, da SOLO el código de esos métodos exactos. " +
+    "2. Si el ejercicio es de JDBC, usa siempre PreparedStatement y ResultSet con MySQL. " +
+    "3. Asume siempre que existe una conexión llamada 'conn' de tipo Connection. " +
     "4. Sin markdown ni ```. " +
-    "5. Comentarios mínimos solo en líneas clave, en español. " +
-    "6. Si no se pide main, no lo pongas.";app.use((req, res, next) => {
+    "5. Sin explicaciones, sin preguntas, sin pedir más contexto. " +
+    "6. Si falta información, asume valores razonables y responde igualmente. " +
+    "7. Comentarios mínimos en español solo en líneas clave.";app.use((req, res, next) => {
     if (req.headers['x-proxy-token'] !== MY_TOKEN) {
         return res.status(401).json({ error: 'No autorizado' });
     }
