@@ -15,7 +15,9 @@ const SYSTEM_PROMPT =
     "4. Sin markdown ni ```. " +
     "5. Sin explicaciones, sin preguntas, sin pedir más contexto. " +
     "6. Si falta información, asume valores razonables y responde igualmente. " +
-    "7. Comentarios mínimos en español solo en líneas clave.";app.use((req, res, next) => {
+    "7. Comentarios mínimos en español solo en líneas clave."
+    "8. NUNCA uses ``` ni bloques de código markdown. Escribe el código en texto plano directamente.";
+;app.use((req, res, next) => {
     if (req.headers['x-proxy-token'] !== MY_TOKEN) {
         return res.status(401).json({ error: 'No autorizado' });
     }
